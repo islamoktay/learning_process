@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ilk_proje/image_widgets.dart';
 import 'package:flutter_ilk_proje/my_counter_page.dart';
+import 'package:flutter_ilk_proje/temel_buton_turleri.dart';
 
 void main() {
   debugPrint('main metodu calıstı');
@@ -16,15 +17,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'My Home Page',
       theme: ThemeData(
-          primarySwatch: Colors.teal,
+          primarySwatch: Colors.purple,
           textTheme: TextTheme(
               headline1: TextStyle(
             color: Colors.purple,
             fontWeight: FontWeight.bold,
           ))),
       home: Scaffold(
-        appBar: AppBar(title: Text('Image Ornekleri')),
-        body: ImageOrnekleri(),
+        appBar: AppBar(title: Text('Buton Örnekleri')),
+        body: TemelButonlar(),
       ),
     );
   }
