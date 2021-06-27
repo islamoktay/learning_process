@@ -12,30 +12,56 @@ class ImageOrnekleri extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          Container(
-            color: Colors.red.shade200,
-            height: 150,
-            width: 150,
-            child: Image.asset(
-              'assets/images/galatasaray_resim.jpg',
-              fit: BoxFit.cover,
+          IntrinsicHeight(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Expanded(
+                  child: Container(
+                    color: Colors.red.shade200,
+                    child: Image.asset(
+                      'assets/images/galatasaray_resim.jpg',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                      color: Colors.red.shade200,
+                      child: Image.network(
+                        _imgURL,
+                        fit: BoxFit.cover,
+                      )),
+                ),
+                Expanded(
+                  child: Container(
+                    color: Colors.red,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: CircleAvatar(
+                        backgroundColor: Colors.yellow,
+                        backgroundImage: NetworkImage(
+                          _logoUrl,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           Container(
-              color: Colors.red.shade200,
-              height: 150,
-              width: 150,
-              child: Image.network(
-                _imgURL,
-                fit: BoxFit.cover,
-              )),
-          Container(
-            color: Colors.red,
-            height: 150,
-            width: 150,
-            child: CircleAvatar(
-              backgroundColor: Colors.yellow,
-              backgroundImage: NetworkImage(_logoUrl),
+            child: FadeInImage.assetNetwork(
+              placeholder: 'assets/images/loading.gif',
+              image: _imgURL,
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Placeholder(
+                color: Colors.blue,
+              ),
             ),
           ),
         ],
