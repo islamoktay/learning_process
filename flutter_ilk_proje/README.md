@@ -1,6 +1,6 @@
 # flutter_ilk_proje
 
-A new Flutter project.
+The first project that i try.
 
 ## Getting Started
 
