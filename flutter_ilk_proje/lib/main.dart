@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ilk_proje/dropdown_button_kullanimi.dart';
 // import 'package:flutter_ilk_proje/image_widgets.dart';
 // import 'package:flutter_ilk_proje/my_counter_page.dart';
-import 'package:flutter_ilk_proje/temel_buton_turleri.dart';
+// import 'package:flutter_ilk_proje/temel_buton_turleri.dart';
 
 void main() {
   debugPrint('main metodu calıstı');
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
           ))),
       home: Scaffold(
         appBar: AppBar(title: Text('Buton Örnekleri')),
-        body: TemelButonlar(),
+        body: DropDownButtonKullanimi(),
       ),
     );
   }
