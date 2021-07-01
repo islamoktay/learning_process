@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
-import 'package:flutter_scrolls/cardlisttile.dart';
+// import 'package:flutter_scrolls/cardlisttile.dart';
 import 'package:flutter_scrolls/listview_kullanimi.dart';
+import 'package:flutter_scrolls/listview_layout_problemleri.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      home: ListViewKullanimi(),
+      home: ListViewLayoutProblemleri(),
       builder: EasyLoading.init(),
     );
   }

@@ -35,6 +35,9 @@ class ListViewKullanimi extends StatelessWidget {
                 toastPosition: EasyLoadingToastPosition.bottom,
               );
             },
+            onLongPress: () {
+              alertDialogIslemleri(context, oAnkiOgrenci);
+            },
             title: Text(oAnkiOgrenci.ad),
             subtitle: Text(oAnkiOgrenci.soyad),
             leading: CircleAvatar(
@@ -72,6 +75,45 @@ class ListViewKullanimi extends StatelessWidget {
           .toList(),
     );
   }
+
+  void alertDialogIslemleri(BuildContext myContext, Ogrenci secilen) {
+    showDialog(
+      barrierDismissible: false,
+      context: myContext,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(
+            secilen.toString(),
+            textAlign: TextAlign.justify,
+          ),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: [
+                Text('Ahmet İslam Oktay ' * 100),
+                Text('Fatma Betül Oktay ' * 100),
+              ],
+            ),
+          ),
+          actions: [
+            ButtonBar(
+              children: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('KAPAT'),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text('TAMAM'),
+                ),
+              ],
+            ),
+          ],
+        );
+      },
+    );
+  }
 }
 
 class Ogrenci {
@@ -80,4 +122,9 @@ class Ogrenci {
   final int id;
   final String ad;
   final String soyad;
+
+  @override
+  String toString() {
+    return 'Öğrenci adı: $ad\nÖğrenci soyadı: $soyad\nid: $id';
+  }
 }
