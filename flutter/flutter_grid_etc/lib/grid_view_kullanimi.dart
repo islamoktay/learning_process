@@ -10,45 +10,52 @@ class GridViewOrnek extends StatelessWidget {
       gridDelegate:
           SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       itemBuilder: (BuildContext context, int index) {
-        return Container(
-          alignment: Alignment.bottomCenter,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black45,
-                spreadRadius: 0.5,
-                offset: Offset(5, 5),
-                blurRadius: 10,
+        return GestureDetector(
+          child: Container(
+            alignment: Alignment.bottomCenter,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black45,
+                  spreadRadius: 0.5,
+                  offset: Offset(5, 5),
+                  blurRadius: 10,
+                ),
+              ],
+              //borderRadius: BorderRadius.circular(10),
+              border: Border.all(
+                color: Colors.black,
+                width: 10,
+                style: BorderStyle.solid,
               ),
-            ],
-            //borderRadius: BorderRadius.circular(10),
-            border: Border.all(
-              color: Colors.black,
-              width: 10,
-              style: BorderStyle.solid,
+              color: Colors.teal[100 * ((index + 1) % 9)],
+              gradient: LinearGradient(
+                colors: [Colors.yellow, Colors.red],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+              image: DecorationImage(
+                image: AssetImage("assets/images/galatasaray.jpg"),
+                fit: BoxFit.contain,
+                alignment: Alignment.topCenter,
+              ),
             ),
-            color: Colors.teal[100 * ((index + 1) % 9)],
-            gradient: LinearGradient(
-              colors: [Colors.yellow, Colors.red],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-            image: DecorationImage(
-              image: AssetImage("assets/images/galatasaray.jpg"),
-              fit: BoxFit.contain,
-              alignment: Alignment.topCenter,
-            ),
-          ),
-          margin: EdgeInsets.all(20),
-          child: Padding(
-            padding: EdgeInsets.all(20),
-            child: Text(
-              'Merhaba Flutter $index',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            margin: EdgeInsets.all(20),
+            child: Padding(
+              padding: EdgeInsets.all(20),
+              child: Text(
+                'Merhaba Flutter $index',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
             ),
           ),
+          onTap: () => debugPrint("Merhaba Flutter $index tıklandı"),
+          onDoubleTap: () => debugPrint("Merhaba Flutter $index çift tıklandı"),
+          onLongPress: () => debugPrint("Merhaba Flutter $index uzun basıldı"),
+          onHorizontalDragStart: (e) =>
+              debugPrint("Merhaba Flutter $index sürüklendi $e"),
         );
       },
     );

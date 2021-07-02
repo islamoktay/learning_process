@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_grid_etc/custom_scroll_slivers.dart';
 import 'package:flutter_grid_etc/grid_view_kullanimi.dart';
 
 void main() {
@@ -11,15 +12,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Dersleri',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.orange),
+      theme: ThemeData(
+        primarySwatch: Colors.orange,
+        brightness: Brightness.dark,
+      ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'GridView Dersleri',
-            style: TextStyle(color: Colors.white),
-          ),
-        ),
-        body: GridViewOrnek(),
+        body: CollapsableToolbarOrnek(),
       ),
     );
   }
