@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.orange,
-        brightness: Brightness.dark,
       ),
       home: Scaffold(
         body: CollapsableToolbarOrnek(),
