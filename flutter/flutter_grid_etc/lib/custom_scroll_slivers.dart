@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as matematik;
 
 class CollapsableToolbarOrnek extends StatelessWidget {
   const CollapsableToolbarOrnek({Key? key}) : super(key: key);
@@ -9,9 +10,10 @@ class CollapsableToolbarOrnek extends StatelessWidget {
       slivers: [
         SliverAppBar(
           backgroundColor: Colors.red,
-          expandedHeight: 300,
+          expandedHeight: 100,
           floating: false,
           pinned: true,
+          snap: false,
           flexibleSpace: FlexibleSpaceBar(
             title: Text("Sliver App Bar"),
             centerTitle: true,
@@ -21,8 +23,32 @@ class CollapsableToolbarOrnek extends StatelessWidget {
             ),
           ),
         ),
-        SliverList(
-          delegate: sabitListeElemanlari(),
+        SliverPadding(
+          padding: EdgeInsets.all(10),
+          sliver: SliverList(
+            delegate: sabitListeElemanlari(),
+          ),
+        ),
+        SliverPadding(
+          padding: EdgeInsets.all(7),
+          sliver: SliverList(
+            delegate: SliverChildBuilderDelegate(
+              _dinamikElemanUretenFonksiyon,
+              childCount: 6,
+            ),
+          ),
+        ),
+        SliverPadding(
+          padding: EdgeInsets.all(16),
+          sliver: SliverFixedExtentList(
+            delegate: sabitListeElemanlari(),
+            itemExtent: 200,
+          ),
+        ),
+        SliverFixedExtentList(
+          delegate: SliverChildBuilderDelegate(_dinamikElemanUretenFonksiyon,
+              childCount: 6),
+          itemExtent: 50,
         ),
       ],
     );
@@ -87,5 +113,26 @@ class CollapsableToolbarOrnek extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Widget? _dinamikElemanUretenFonksiyon(BuildContext context, int index) {
+    return Container(
+      height: 100,
+      child: Text(
+        "Dinamik Liste Elemanı ${index + 1}",
+        style: TextStyle(fontSize: 30),
+      ),
+      color: rastgeleRenkUret(),
+      alignment: Alignment.center,
+      margin: EdgeInsets.all(1),
+    );
+  }
+
+  Color rastgeleRenkUret() {
+    return Color.fromARGB(
+        matematik.Random().nextInt(255),
+        matematik.Random().nextInt(255),
+        matematik.Random().nextInt(255),
+        matematik.Random().nextInt(255));
   }
 }
