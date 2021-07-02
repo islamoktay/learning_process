@@ -11,7 +11,10 @@ class GridViewOrnek extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return Container(
             alignment: Alignment.center,
-            color: Colors.teal[100 * (index % 9)],
+            decoration: BoxDecoration(
+              color: Colors.teal[100 * ((index + 1) % 9)],
+            ),
+            margin: EdgeInsets.all(20),
             child: Text(
               'Merhaba Flutter',
               textAlign: TextAlign.center,
