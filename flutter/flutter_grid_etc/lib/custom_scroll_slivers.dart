@@ -29,6 +29,11 @@ class CollapsableToolbarOrnek extends StatelessWidget {
             delegate: sabitListeElemanlari(),
           ),
         ),
+        SliverGrid(
+          gridDelegate:
+              SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+          delegate: sabitListeElemanlari(),
+        ),
         SliverPadding(
           padding: EdgeInsets.all(7),
           sliver: SliverList(
@@ -38,11 +43,23 @@ class CollapsableToolbarOrnek extends StatelessWidget {
             ),
           ),
         ),
+        SliverGrid(
+            delegate: SliverChildBuilderDelegate(_dinamikElemanUretenFonksiyon,
+                childCount: 6),
+            gridDelegate:
+                SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3)),
         SliverPadding(
           padding: EdgeInsets.all(16),
           sliver: SliverFixedExtentList(
             delegate: sabitListeElemanlari(),
             itemExtent: 200,
+          ),
+        ),
+        SliverGrid(
+          delegate: SliverChildBuilderDelegate(_dinamikElemanUretenFonksiyon,
+              childCount: 6),
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 250,
           ),
         ),
         SliverFixedExtentList(
@@ -61,7 +78,7 @@ class CollapsableToolbarOrnek extends StatelessWidget {
           height: 100,
           child: Text(
             "Sabit Liste Elemanı 1",
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(fontSize: 20),
           ),
           color: Colors.amber,
           alignment: Alignment.center,
@@ -70,7 +87,7 @@ class CollapsableToolbarOrnek extends StatelessWidget {
           height: 100,
           child: Text(
             "Sabit Liste Elemanı 2",
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(fontSize: 20),
           ),
           color: Colors.teal,
           alignment: Alignment.center,
@@ -79,7 +96,7 @@ class CollapsableToolbarOrnek extends StatelessWidget {
           height: 100,
           child: Text(
             "Sabit Liste Elemanı 3",
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(fontSize: 20),
           ),
           color: Colors.grey,
           alignment: Alignment.center,
@@ -88,7 +105,7 @@ class CollapsableToolbarOrnek extends StatelessWidget {
           height: 100,
           child: Text(
             "Sabit Liste Elemanı 4",
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(fontSize: 20),
           ),
           color: Colors.green,
           alignment: Alignment.center,
@@ -97,7 +114,7 @@ class CollapsableToolbarOrnek extends StatelessWidget {
           height: 100,
           child: Text(
             "Sabit Liste Elemanı 5",
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(fontSize: 20),
           ),
           color: Colors.blue,
           alignment: Alignment.center,
@@ -106,7 +123,7 @@ class CollapsableToolbarOrnek extends StatelessWidget {
           height: 100,
           child: Text(
             "Sabit Liste Elemanı 6",
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(fontSize: 20),
           ),
           color: Colors.indigo,
           alignment: Alignment.center,
@@ -120,7 +137,7 @@ class CollapsableToolbarOrnek extends StatelessWidget {
       height: 100,
       child: Text(
         "Dinamik Liste Elemanı ${index + 1}",
-        style: TextStyle(fontSize: 30),
+        style: TextStyle(fontSize: 15),
       ),
       color: rastgeleRenkUret(),
       alignment: Alignment.center,
