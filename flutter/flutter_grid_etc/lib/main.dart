@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text(
-            'Gridview Dersleri',
+            'GridView Dersleri',
             style: TextStyle(color: Colors.white),
           ),
         ),
