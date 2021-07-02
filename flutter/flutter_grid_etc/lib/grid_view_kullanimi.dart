@@ -6,21 +6,37 @@ class GridViewOrnek extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Colors.teal[100 * ((index + 1) % 9)],
+      itemCount: 100,
+      gridDelegate:
+          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+      itemBuilder: (BuildContext context, int index) {
+        return Container(
+          alignment: Alignment.bottomCenter,
+          decoration: BoxDecoration(
+            color: Colors.teal[100 * ((index + 1) % 9)],
+            gradient: LinearGradient(
+              colors: [Colors.yellow, Colors.red],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
-            margin: EdgeInsets.all(20),
+            image: DecorationImage(
+              image: AssetImage("assets/images/galatasaray.jpg"),
+              fit: BoxFit.contain,
+              alignment: Alignment.topCenter,
+            ),
+          ),
+          margin: EdgeInsets.all(20),
+          child: Padding(
+            padding: EdgeInsets.all(20),
             child: Text(
-              'Merhaba Flutter',
+              'Merhaba Flutter $index',
               textAlign: TextAlign.center,
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 
   GridView gridViewExtentKullanimi() {
