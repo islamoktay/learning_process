@@ -51,6 +51,15 @@ class RedPage extends StatelessWidget {
                   'Can Pop Kullanımı',
                 ),
               ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, "/orangePage");
+                },
+                style: ElevatedButton.styleFrom(primary: Colors.orange),
+                child: Text(
+                  'PushNamed Kullanımı',
+                ),
+              ),
             ],
           ),
         ),
