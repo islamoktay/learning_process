@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_navigator/green_page.dart';
 import 'package:flutter_navigator/red_page.dart';
 
 void main() => runApp(MyApp());
@@ -58,6 +59,47 @@ class AnaSayfa extends StatelessWidget {
               ),
               child: Text(
                 'Kırmızı Sayfaya Git Android',
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).maybePop();
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Colors.cyan.shade200,
+              ),
+              child: Text(
+                'Maybe Pop Kullanımı',
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (Navigator.canPop(context)) {
+                  print("evet pop olabilir");
+                } else {
+                  print("hayır olamaz");
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Colors.grey,
+              ),
+              child: Text(
+                'Can Pop Kullanımı',
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => GreenPage(),
+                  ),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Colors.green,
+              ),
+              child: Text(
+                'Push Replacement Kullanımı',
               ),
             ),
           ],
