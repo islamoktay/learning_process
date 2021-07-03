@@ -130,6 +130,17 @@ class AnaSayfa extends StatelessWidget {
                 'PushNamed Kullanımı',
               ),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "/yellowPage");
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Colors.yellow,
+              ),
+              child: Text(
+                'PushNamed Kullanımı Yellow',
+              ),
+            ),
           ],
         ),
       ),

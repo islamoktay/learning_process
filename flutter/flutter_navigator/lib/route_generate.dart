@@ -3,38 +3,39 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_navigator/main.dart';
 import 'package:flutter_navigator/orange_page.dart';
+import 'package:flutter_navigator/yellow_page.dart';
 
 class RouteGenerator {
-  static Route<dynamic> routeGenerator(RouteSettings settings) {
+  static Route<dynamic>? _routeOlustur(Widget gidilecekWidget) {
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      return CupertinoPageRoute(
+        builder: (context) => gidilecekWidget,
+      );
+    } else if (defaultTargetPlatform == TargetPlatform.android) {
+      return MaterialPageRoute(
+        builder: (context) => gidilecekWidget,
+      );
+    } else {
+      return MaterialPageRoute(
+        builder: (context) => gidilecekWidget,
+      );
+    }
+  }
+
+  static Route<dynamic>? routeGenerator(RouteSettings settings) {
     switch (settings.name) {
       case '/':
-        if (defaultTargetPlatform == TargetPlatform.iOS) {
-          return CupertinoPageRoute(
-            builder: (context) => AnaSayfa(),
-          );
-        } else if (defaultTargetPlatform == TargetPlatform.android) {
-          return MaterialPageRoute(
-            builder: (context) => AnaSayfa(),
-          );
-        } else {
-          return MaterialPageRoute(
-            builder: (context) => AnaSayfa(),
-          );
-        }
+        return _routeOlustur(
+          AnaSayfa(),
+        );
       case '/orangePage':
-        if (defaultTargetPlatform == TargetPlatform.iOS) {
-          return CupertinoPageRoute(
-            builder: (context) => OrangePage(),
-          );
-        } else if (defaultTargetPlatform == TargetPlatform.android) {
-          return MaterialPageRoute(
-            builder: (context) => OrangePage(),
-          );
-        } else {
-          return MaterialPageRoute(
-            builder: (context) => OrangePage(),
-          );
-        }
+        return _routeOlustur(
+          OrangePage(),
+        );
+      case '/yellowPage':
+        return _routeOlustur(
+          YellowPage(),
+        );
       default:
         return MaterialPageRoute(
             builder: (context) => Scaffold(
