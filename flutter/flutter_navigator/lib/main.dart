@@ -27,13 +27,14 @@ class AnaSayfa extends StatelessWidget {
         child: Column(
           children: [
             ElevatedButton(
-              onPressed: () {
-                Navigator.push(
+              onPressed: () async {
+                int? _gelenSayi = await Navigator.push<int>(
                   context,
                   CupertinoPageRoute(
                     builder: (redContext) => RedPage(),
                   ),
                 );
+                print("Ana sayfadaki sayı: $_gelenSayi");
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.red.shade300,
@@ -44,11 +45,13 @@ class AnaSayfa extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (redContext) => RedPage(),
-                  ),
-                );
+                Navigator.of(context)
+                    .push<int>(
+                      MaterialPageRoute(
+                        builder: (redContext) => RedPage(),
+                      ),
+                    )
+                    .then((int? value) => debugPrint("Gelen sayı $value"));
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.red.shade200,

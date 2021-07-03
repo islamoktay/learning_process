@@ -11,9 +11,13 @@ class GreenPage extends StatelessWidget {
         backgroundColor: Colors.green,
       ),
       body: Center(
-        child: Text(
-          'Green Page',
-          style: TextStyle(fontSize: 24),
+        child: Column(
+          children: [
+            Text(
+              'Green Page',
+              style: TextStyle(fontSize: 24),
+            ),
+          ],
         ),
       ),
     );

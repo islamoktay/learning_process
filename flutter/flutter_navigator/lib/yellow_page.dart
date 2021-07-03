@@ -11,9 +11,13 @@ class YellowPage extends StatelessWidget {
         backgroundColor: Colors.yellow,
       ),
       body: Center(
-        child: Text(
-          'Yellow Page',
-          style: TextStyle(fontSize: 24),
+        child: Column(
+          children: [
+            Text(
+              'Yellow Page',
+              style: TextStyle(fontSize: 24),
+            ),
+          ],
         ),
       ),
     );

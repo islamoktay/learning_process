@@ -11,9 +11,13 @@ class OrangePage extends StatelessWidget {
         backgroundColor: Colors.orange,
       ),
       body: Center(
-        child: Text(
-          'Orange Page',
-          style: TextStyle(fontSize: 24),
+        child: Column(
+          children: [
+            Text(
+              'Orange Page',
+              style: TextStyle(fontSize: 24),
+            ),
+          ],
         ),
       ),
     );
