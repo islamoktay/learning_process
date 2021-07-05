@@ -141,6 +141,15 @@ class AnaSayfa extends StatelessWidget {
                 'PushNamed Kullanımı Yellow',
               ),
             ),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                primary: Colors.orange.shade600,
+              ),
+              child: Text(
+                'Liste Oluştur',
+              ),
+            ),
           ],
         ),
       ),
