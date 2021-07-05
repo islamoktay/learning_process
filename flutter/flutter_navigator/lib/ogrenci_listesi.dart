@@ -5,7 +5,19 @@ class OgrenciListesi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    int elemanSayisi = ModalRoute.of(context)!.settings.arguments as int;
+    List<Ogrenci> tumOgrenciler = List.generate(
+      elemanSayisi,
+      (index) =>
+          Ogrenci(index + 1, 'İsim : ${index + 1}', 'Soyisim : ${index + 1}'),
+    );
+    print("eleman sayısı alındı : $elemanSayisi");
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Öğrenci Listesi'),
+      ),
+      body: Container(),
+    );
   }
 }
 

@@ -142,7 +142,10 @@ class AnaSayfa extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context)
+                    .pushNamed('/ogrenciListesi', arguments: 60);
+              },
               style: ElevatedButton.styleFrom(
                 primary: Colors.orange.shade600,
               ),
