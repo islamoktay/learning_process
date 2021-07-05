@@ -2,9 +2,16 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class RedPage extends StatelessWidget {
+class RedPage extends StatefulWidget {
   RedPage({Key? key}) : super(key: key);
+
+  @override
+  _RedPageState createState() => _RedPageState();
+}
+
+class _RedPageState extends State<RedPage> {
   int _rastgeleSayi = 0;
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(

@@ -9,21 +9,32 @@ class OgrenciListesi extends StatelessWidget {
     List<Ogrenci> tumOgrenciler = List.generate(
       elemanSayisi,
       (index) =>
-          Ogrenci(index + 1, 'İsim : ${index + 1}', 'Soyisim : ${index + 1}'),
+          Ogrenci('İsim : ${index + 1}', 'Soyisim : ${index + 1}', index + 1),
     );
     print("eleman sayısı alındı : $elemanSayisi");
     return Scaffold(
       appBar: AppBar(
         title: Text('Öğrenci Listesi'),
       ),
-      body: Container(),
+      body: ListView.builder(
+        itemCount: 60,
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: CircleAvatar(
+              child: Text(tumOgrenciler[index].id.toString()),
+            ),
+            title: Text(tumOgrenciler[index].isim),
+            subtitle: Text(tumOgrenciler[index].soyisim),
+          );
+        },
+      ),
     );
   }
 }
 
 class Ogrenci {
   Ogrenci(this.isim, this.soyisim, this.id);
-  final isim;
-  final soyisim;
-  final id;
+  final String isim;
+  final String soyisim;
+  final int id;
 }

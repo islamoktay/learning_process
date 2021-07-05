@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_navigator/green_page.dart';
-import 'package:flutter_navigator/orange_page.dart';
+//import 'package:flutter_navigator/orange_page.dart';
 import 'package:flutter_navigator/red_page.dart';
 import 'package:flutter_navigator/route_generate.dart';
 
