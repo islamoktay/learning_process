@@ -20,6 +20,10 @@ class OgrenciListesi extends StatelessWidget {
         itemCount: 60,
         itemBuilder: (context, index) {
           return ListTile(
+            onTap: () {
+              var secilen = tumOgrenciler[index];
+              Navigator.pushNamed(context, '/ogrenciDetay', arguments: secilen);
+            },
             leading: CircleAvatar(
               child: Text(tumOgrenciler[index].id.toString()),
             ),

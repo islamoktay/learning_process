@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_navigator/main.dart';
+import 'package:flutter_navigator/ogrenci_detay.dart';
 import 'package:flutter_navigator/ogrenci_listesi.dart';
 import 'package:flutter_navigator/orange_page.dart';
 import 'package:flutter_navigator/yellow_page.dart';
@@ -37,6 +38,10 @@ class RouteGenerator {
         return _routeOlustur(YellowPage(), settings);
       case '/ogrenciListesi':
         return _routeOlustur(OgrenciListesi(), settings);
+      case '/ogrenciDetay':
+        var parametredekiOgrenci = settings.arguments as Ogrenci;
+        return _routeOlustur(
+            OgrenciDetay(secilenOgrenci: parametredekiOgrenci), settings);
 
       default:
         return MaterialPageRoute(
