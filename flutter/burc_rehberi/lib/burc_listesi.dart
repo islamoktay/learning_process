@@ -1,3 +1,4 @@
+import 'package:burc_rehberi/burc_item.dart';
 import 'package:burc_rehberi/data/strings.dart';
 import 'package:burc_rehberi/model/burc.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +13,18 @@ class BurcListesi extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Burçlar Listesi'),
+        centerTitle: true,
+        title: Text(
+          'Burçlar Listesi',
+        ),
       ),
-      body: Center(
-        child: Text('Burç Listesi Buraya Gelecek'),
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return BurcItem(
+            listelenenBurc: tumBurclar[index],
+          );
+        },
+        itemCount: tumBurclar.length,
       ),
     );
   }

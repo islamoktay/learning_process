@@ -7,6 +7,15 @@ class Burc {
   final String _burcTarihi;
   final String _burcKucukResim;
   final String _burcBuyukResim;
+  get burcAdi => this._burcAdi;
+
+  get burcDetayi => this._burcDetayi;
+
+  get burcTarihi => this._burcTarihi;
+
+  get burcKucukResim => this._burcKucukResim;
+
+  get burcBuyukResim => this._burcBuyukResim;
 
   @override
   String toString() {
