@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_inputs/text_form_fuild_kullanimi.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TextFieldIslemleri(),
+      home: TextFormFieldKullanimi(),
     );
   }
 }
