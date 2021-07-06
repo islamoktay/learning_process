@@ -15,8 +15,40 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class TextFieldIslemleri extends StatelessWidget {
+class TextFieldIslemleri extends StatefulWidget {
   const TextFieldIslemleri({Key? key}) : super(key: key);
+
+  @override
+  _TextFieldIslemleriState createState() => _TextFieldIslemleriState();
+}
+
+class _TextFieldIslemleriState extends State<TextFieldIslemleri> {
+  late TextEditingController _emailController;
+  late FocusNode _focusNode;
+  int maxLineCount = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController = TextEditingController(text: 'ahmet@ahmet.com');
+    _focusNode = FocusNode();
+    _focusNode.addListener(() {
+      setState(() {
+        if (_focusNode.hasFocus) {
+          maxLineCount = 3;
+        } else {
+          maxLineCount = 1;
+        }
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _focusNode.dispose();
+    _emailController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +61,21 @@ class TextFieldIslemleri extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
+              focusNode: _focusNode,
+              controller: _emailController,
               keyboardType: TextInputType.number,
               textInputAction: TextInputAction.next,
               autofocus: true,
+              maxLines: maxLineCount,
               maxLength: 20,
               onChanged: (String deger) {
                 if (deger.length > 3) {
-                  print(deger);
+                  setState(() {
+                    _emailController.value = TextEditingValue(
+                      text: deger,
+                      selection: TextSelection.collapsed(offset: deger.length),
+                    );
+                  });
                 }
               },
               cursorColor: Colors.pink,
@@ -56,6 +96,10 @@ class TextFieldIslemleri extends StatelessWidget {
             ),
           ),
           Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(_emailController.text),
+          ),
+          Padding(
             padding: const EdgeInsets.all(16.0),
             child: TextField(
               keyboardType: TextInputType.number,
@@ -65,7 +109,11 @@ class TextFieldIslemleri extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            _emailController.text = 'islamoktay34@gmail.com';
+          });
+        },
         child: Icon(Icons.edit),
       ),
     );
