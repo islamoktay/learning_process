@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -426,46 +426,52 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
-                Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
-                  height: 70,
-                  decoration: BoxDecoration(
-                    color: Colors.blue,
-                    border: BorderDirectional(
-                      top: BorderSide(color: Colors.blue, width: 2),
-                      bottom: BorderSide(color: Colors.blue, width: 2),
+                Expanded(
+                  child: Container(
+                    margin: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      border: BorderDirectional(
+                        top: BorderSide(color: Colors.blue, width: 2),
+                        bottom: BorderSide(color: Colors.blue, width: 2),
+                      ),
                     ),
+                    child: Center(
+                        child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: tumDersler.length == 0
+                                ? "Lütfen Ders Ekleyiniz"
+                                : "Ortalama : ",
+                            style: TextStyle(fontSize: 30, color: Colors.white),
+                          ),
+                          TextSpan(
+                            text: tumDersler.length == 0
+                                ? ""
+                                : "${ortalama.toStringAsFixed(2)}",
+                            style: TextStyle(
+                                fontSize: 40,
+                                color: Colors.purple,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    )),
                   ),
-                  child: Center(
-                      child: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: tumDersler.length == 0
-                              ? "Lütfen Ders Ekleyiniz"
-                              : "Ortalama : ",
-                          style: TextStyle(fontSize: 30, color: Colors.white),
-                        ),
-                        TextSpan(
-                          text: tumDersler.length == 0
-                              ? ""
-                              : "${ortalama.toStringAsFixed(2)}",
-                          style: TextStyle(
-                              fontSize: 40,
-                              color: Colors.purple,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  )),
                 ),
               ],
             ),
             flex: 2,
           ),
           Expanded(
-            child: Text("Eklenen Dersler"),
+            child: Container(
+              child: ListView.builder(
+                itemBuilder: _listeElemanlariniOlustur,
+                itemCount: tumDersler.length,
+              ),
+            ),
             flex: 3,
           ),
         ],
