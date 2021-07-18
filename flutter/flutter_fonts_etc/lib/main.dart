@@ -41,31 +41,37 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text("Flutter Dersleri Bölüm 2"),
       ),
       body: KisiselFont(),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "Ana Sayfa",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.call),
-            label: "Ara",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: "Ekle",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_box),
-            label: "Profil",
-          ),
-        ],
-        type: BottomNavigationBarType.fixed,
-        currentIndex: secilenMenuItem,
-        onTap: (index) {
+      bottomNavigationBar: bottomNavMenu(),
+    );
+  }
+
+  bottomNavMenu() {
+    return BottomNavigationBar(
+      items: [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home),
+          label: "Ana Sayfa",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.call),
+          label: "Ara",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.add),
+          label: "Ekle",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.account_box),
+          label: "Profil",
+        ),
+      ],
+      type: BottomNavigationBarType.fixed,
+      currentIndex: secilenMenuItem,
+      onTap: (index) {
+        setState(() {
           secilenMenuItem = index;
-        },
-      ),
+        });
+      },
     );
   }
 }
