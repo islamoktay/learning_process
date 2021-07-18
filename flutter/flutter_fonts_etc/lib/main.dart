@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_fonts_etc/anasayfa.dart';
+import 'package:flutter_fonts_etc/aramasayfasi.dart';
 import 'package:flutter_fonts_etc/drawer_menu.dart';
 import 'package:flutter_fonts_etc/kisisel_font.dart';
 
@@ -15,7 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Dersleri',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
+        primarySwatch: Colors.teal,
         accentColor: Colors.orangeAccent,
       ),
       home: MyHomePage(),
@@ -32,6 +34,16 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int secilenMenuItem = 0;
+  late List<Widget> tumSayfalar;
+  late AnaSayfa sayfaAna;
+  late AramaSayfasi sayfaArama;
+  @override
+  void initState() {
+    super.initState();
+    sayfaAna = AnaSayfa();
+    sayfaArama = AramaSayfasi();
+    tumSayfalar = [sayfaAna, sayfaArama];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +52,9 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text("Flutter Dersleri Bölüm 2"),
       ),
-      body: KisiselFont(),
+      body: secilenMenuItem < tumSayfalar.length
+          ? tumSayfalar[secilenMenuItem]
+          : tumSayfalar[0],
       bottomNavigationBar: bottomNavMenu(),
     );
   }
