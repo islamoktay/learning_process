@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
           label: "Ana Sayfa",
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.call),
+          icon: Icon(Icons.search),
           label: "Ara",
         ),
         BottomNavigationBarItem(
