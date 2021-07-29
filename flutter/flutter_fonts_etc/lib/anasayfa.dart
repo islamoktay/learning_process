@@ -11,6 +11,7 @@ class AnaSayfa extends StatefulWidget {
 
 class _AnaSayfaState extends State<AnaSayfa> {
   late List<Veri> tumVeriler;
+
   @override
   void initState() {
     super.initState();
@@ -31,15 +32,21 @@ class _AnaSayfaState extends State<AnaSayfa> {
       Veri("İletişim", "İçerik Buraya Gelecek", false),
       Veri("İletişim", "İçerik Buraya Gelecek", false),
       Veri("İletişim", "İçerik Buraya Gelecek", false),
+      Veri("İletişim", "İçerik Buraya Gelecek", false),
+      Veri("İletişim", "İçerik Buraya Gelecek", false),
+      Veri("İletişim", "İçerik Buraya Gelecek", false),
+      Veri("İletişim", "İçerik Buraya Gelecek", false),
     ];
   }
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+        key: PageStorageKey<String>('keyAnaSayfa'),
         itemCount: tumVeriler.length,
         itemBuilder: (context, index) {
           return ExpansionTile(
+            key: PageStorageKey("$index"),
             title: Text(tumVeriler[index].baslik),
             initiallyExpanded: tumVeriler[index].expanded,
             children: [

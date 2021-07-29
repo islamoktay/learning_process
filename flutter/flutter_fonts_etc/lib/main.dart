@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_fonts_etc/anasayfa.dart';
 import 'package:flutter_fonts_etc/aramasayfasi.dart';
 import 'package:flutter_fonts_etc/drawer_menu.dart';
-import 'package:flutter_fonts_etc/kisisel_font.dart';
+//import 'package:flutter_fonts_etc/kisisel_font.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
   late List<Widget> tumSayfalar;
   late AnaSayfa sayfaAna;
   late AramaSayfasi sayfaArama;
+
   @override
   void initState() {
     super.initState();

@@ -9,6 +9,7 @@ class AramaSayfasi extends StatelessWidget {
       color: Colors.white24,
       child: Center(
         child: ListView.builder(
+            key: PageStorageKey<String>('keyArama'),
             itemExtent: 300,
             itemBuilder: (context, index) {
               return Container(
