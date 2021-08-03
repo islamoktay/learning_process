@@ -1,6 +1,26 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_not_hesaplama_yeni/model/ders.dart';
 
 class DataHelper {
+  static List<Ders> tumEklenenDersler = [];
+
+  static dersEkle(Ders ders) {
+    tumEklenenDersler.add(ders);
+  }
+
+  static double ortalamaHesapla() {
+    double toplamNot = 0;
+    double toplamKredi = 0;
+
+    tumEklenenDersler.forEach((element) {
+      toplamNot = toplamNot + (element.krediDegeri * element.harfDegeri);
+      toplamKredi += element.krediDegeri;
+    });
+
+    return toplamNot / toplamKredi;
+  }
+
   static List<String> _createDersHarfNotlari() {
     return ['AA', 'BA', 'BB', 'CB', 'CC', 'DC', 'DD', 'FD', 'FF'];
   }
