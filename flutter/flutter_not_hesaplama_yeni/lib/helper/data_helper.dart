@@ -44,8 +44,7 @@ class DataHelper {
   }
 
   static List<DropdownMenuItem<double>> tumKrediler() {
-    return List.generate(10, (index) => (index + 1))
-        .toList()
+    return _tumKrediler()
         .map((e) => DropdownMenuItem(
               child: Text(e.toString()),
               value: e.toDouble(),

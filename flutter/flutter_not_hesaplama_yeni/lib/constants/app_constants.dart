@@ -12,7 +12,7 @@ class Sabitler {
     color: anaRenk,
   );
 
-  static BorderRadius borderGenel = BorderRadius.circular(24);
+  static BorderRadius borderGenel = BorderRadius.circular(16);
 
   static final TextStyle ortalamaGosterBodyStyle = GoogleFonts.quicksand(
     fontSize: 16,
@@ -26,8 +26,11 @@ class Sabitler {
     color: anaRenk,
   );
 
-  static final dropDownPadding = EdgeInsets.symmetric(
+  static final EdgeInsets dropDownPadding = EdgeInsets.symmetric(
     horizontal: 16,
     vertical: 8,
   );
+
+  static final EdgeInsets yatayPaddingSekiz =
+      EdgeInsets.symmetric(horizontal: 8);
 }

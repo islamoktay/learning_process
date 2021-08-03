@@ -12,7 +12,8 @@ class OrtalamaHesapla extends StatefulWidget {
 
 class _OrtalamaHesaplaState extends State<OrtalamaHesapla> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  double secilenDeger = 4;
+  double secilenHarfDegeri = 4;
+  double secilenKrediDegeri = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -58,20 +59,38 @@ class _OrtalamaHesaplaState extends State<OrtalamaHesapla> {
       key: formKey,
       child: Column(
         children: [
-          _buildTextFormField(),
+          Padding(
+            padding: Sabitler.yatayPaddingSekiz,
+            child: _buildTextFormField(),
+          ),
+          SizedBox(
+            height: 5,
+          ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              _buildHarfler(),
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.ac_unit),
+              Expanded(
+                child: Padding(
+                  padding: Sabitler.yatayPaddingSekiz,
+                  child: _buildHarfler(),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: Sabitler.yatayPaddingSekiz,
+                  child: _buildKrediler(),
+                ),
               ),
               IconButton(
                 onPressed: () {},
-                icon: Icon(Icons.ac_unit),
+                icon: Icon(Icons.arrow_forward_ios_sharp),
+                color: Sabitler.anaRenk,
+                iconSize: 30,
               ),
             ],
+          ),
+          SizedBox(
+            height: 5,
           ),
         ],
       ),
@@ -86,6 +105,7 @@ class _OrtalamaHesaplaState extends State<OrtalamaHesapla> {
         hintText: "Matematik",
         border: OutlineInputBorder(
           borderRadius: Sabitler.borderGenel,
+          borderSide: BorderSide.none,
         ),
       ),
     );
@@ -93,22 +113,46 @@ class _OrtalamaHesaplaState extends State<OrtalamaHesapla> {
 
   _buildHarfler() {
     return Container(
+      alignment: Alignment.center,
       padding: Sabitler.dropDownPadding,
       decoration: BoxDecoration(
         color: Sabitler.anaRenk.shade100.withOpacity(0.3),
         borderRadius: Sabitler.borderGenel,
       ),
       child: DropdownButton<double>(
-        value: secilenDeger,
+        value: secilenHarfDegeri,
         elevation: 16,
         iconEnabledColor: Sabitler.anaRenk.shade200,
         onChanged: (deger) {
           setState(() {
-            secilenDeger = deger!;
+            secilenHarfDegeri = deger!;
           });
         },
         underline: Container(),
         items: DataHelper.tumDersHarfleri(),
+      ),
+    );
+  }
+
+  _buildKrediler() {
+    return Container(
+      alignment: Alignment.center,
+      padding: Sabitler.dropDownPadding,
+      decoration: BoxDecoration(
+        color: Sabitler.anaRenk.shade100.withOpacity(0.3),
+        borderRadius: Sabitler.borderGenel,
+      ),
+      child: DropdownButton<double>(
+        value: secilenKrediDegeri,
+        elevation: 16,
+        iconEnabledColor: Sabitler.anaRenk.shade200,
+        onChanged: (deger) {
+          setState(() {
+            secilenKrediDegeri = deger!;
+          });
+        },
+        underline: Container(),
+        items: DataHelper.tumKrediler(),
       ),
     );
   }
