@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inputs/date_time_picker.dart';
+import 'package:flutter_inputs/global_key_kullanimi.dart';
 import 'package:flutter_inputs/stepper_kullanimi.dart';
 import 'package:flutter_inputs/text_form_fuild_kullanimi.dart';
 //import 'package:flutter_inputs/diger_form_elemanlari.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Flutter Demo",
       theme: ThemeData(primarySwatch: Colors.orange),
-      home: TextFormFieldKullanimi(),
+      home: GlobalKeyKullanimi(),
     );
   }
 }
