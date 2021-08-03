@@ -3,14 +3,12 @@ import 'package:flutter_not_hesaplama_yeni/constants/app_constants.dart';
 import 'package:flutter_not_hesaplama_yeni/helper/data_helper.dart';
 import 'package:flutter_not_hesaplama_yeni/model/ders.dart';
 
-class DersListesi extends StatefulWidget {
-  const DersListesi({Key? key}) : super(key: key);
+class DersListesi extends StatelessWidget {
+  final Function onElemanCikarildi;
 
-  @override
-  _DersListesiState createState() => _DersListesiState();
-}
+  const DersListesi({required this.onElemanCikarildi, Key? key})
+      : super(key: key);
 
-class _DersListesiState extends State<DersListesi> {
   @override
   Widget build(BuildContext context) {
     List<Ders> tumDersler = DataHelper.tumEklenenDersler;
@@ -22,7 +20,7 @@ class _DersListesiState extends State<DersListesi> {
                 direction: DismissDirection.startToEnd,
                 onDismissed: (a) {
                   DataHelper.tumEklenenDersler.removeAt(index);
-                  setState(() {});
+                  onElemanCikarildi(index);
                 },
                 key: UniqueKey(),
                 child: Padding(
