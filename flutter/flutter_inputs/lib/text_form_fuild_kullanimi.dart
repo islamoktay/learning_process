@@ -9,6 +9,8 @@ class TextFormFieldKullanimi extends StatefulWidget {
 }
 
 class _TextFormFieldKullanimiState extends State<TextFormFieldKullanimi> {
+  String _email = "", _password = "", _username = "";
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,10 +21,14 @@ class _TextFormFieldKullanimiState extends State<TextFormFieldKullanimi> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
+            key: _formKey,
             child: Column(
               children: [
                 TextFormField(
-                  autovalidateMode: AutovalidateMode.always,
+                  onSaved: (deger) {
+                    _username = deger!;
+                  },
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   // initialValue: 'ahmetislamoktay',
                   decoration: InputDecoration(
                     labelText: 'Username',
@@ -41,7 +47,10 @@ class _TextFormFieldKullanimiState extends State<TextFormFieldKullanimi> {
                   height: 10,
                 ),
                 TextFormField(
-                  autovalidateMode: AutovalidateMode.always,
+                  onSaved: (deger) {
+                    _email = deger!;
+                  },
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   // initialValue: 'islamoktay@gmail.com',
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
@@ -50,7 +59,9 @@ class _TextFormFieldKullanimiState extends State<TextFormFieldKullanimi> {
                     border: OutlineInputBorder(),
                   ),
                   validator: (deger) {
-                    if (!EmailValidator.validate(deger!)) {
+                    if (deger!.isEmpty) {
+                      return "Email boş olamaz";
+                    } else if (!EmailValidator.validate(deger)) {
                       return 'Geçerli mail giriniz';
                     } else {
                       return null;
@@ -61,7 +72,10 @@ class _TextFormFieldKullanimiState extends State<TextFormFieldKullanimi> {
                   height: 10,
                 ),
                 TextFormField(
-                  autovalidateMode: AutovalidateMode.always,
+                  onSaved: (deger) {
+                    _password = deger!;
+                  },
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   // initialValue: 'islamoktay@gmail.com',
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
@@ -77,6 +91,30 @@ class _TextFormFieldKullanimiState extends State<TextFormFieldKullanimi> {
                     }
                   },
                 ),
+                SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    bool _validate = _formKey.currentState!.validate();
+                    if (_validate) {
+                      _formKey.currentState!.save();
+                      String result =
+                          "username: $_username\nemail: $_email\nşifre: $_password";
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: Colors.teal.shade300,
+                          content: Text(
+                            result,
+                            style: TextStyle(fontSize: 24),
+                          ),
+                        ),
+                      );
+                      _formKey.currentState!.reset();
+                    }
+                  },
+                  child: Text("Onayla"),
+                )
               ],
             ),
           ),
