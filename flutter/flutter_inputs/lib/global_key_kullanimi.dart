@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_inputs/sayac_state.dart';
 
 class GlobalKeyKullanimi extends StatelessWidget {
-  const GlobalKeyKullanimi({Key? key}) : super(key: key);
-
+  GlobalKeyKullanimi({Key? key}) : super(key: key);
+  final sayacWidgetKey = GlobalKey<SayacWidgetState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,13 +15,17 @@ class GlobalKeyKullanimi extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text("Butona basılma miktarı"),
-            Text("0"),
+            SayacWidget(
+              key: sayacWidgetKey,
+            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          sayacWidgetKey.currentState!.arttir();
+        },
       ),
     );
   }
