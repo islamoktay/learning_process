@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_not_hesaplama_yeni/constants/app_constants.dart';
+import 'package:flutter_not_hesaplama_yeni/helper/data_helper.dart';
 import 'package:flutter_not_hesaplama_yeni/widgets/ortalama_goster.dart';
 
 class OrtalamaHesapla extends StatefulWidget {
@@ -11,6 +12,7 @@ class OrtalamaHesapla extends StatefulWidget {
 
 class _OrtalamaHesaplaState extends State<OrtalamaHesapla> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  double secilenDeger = 4;
 
   @override
   Widget build(BuildContext context) {
@@ -60,10 +62,7 @@ class _OrtalamaHesaplaState extends State<OrtalamaHesapla> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.ac_unit),
-              ),
+              _buildHarfler(),
               IconButton(
                 onPressed: () {},
                 icon: Icon(Icons.ac_unit),
@@ -88,6 +87,28 @@ class _OrtalamaHesaplaState extends State<OrtalamaHesapla> {
         border: OutlineInputBorder(
           borderRadius: Sabitler.borderGenel,
         ),
+      ),
+    );
+  }
+
+  _buildHarfler() {
+    return Container(
+      padding: Sabitler.dropDownPadding,
+      decoration: BoxDecoration(
+        color: Sabitler.anaRenk.shade100.withOpacity(0.3),
+        borderRadius: Sabitler.borderGenel,
+      ),
+      child: DropdownButton<double>(
+        value: secilenDeger,
+        elevation: 16,
+        iconEnabledColor: Sabitler.anaRenk.shade200,
+        onChanged: (deger) {
+          setState(() {
+            secilenDeger = deger!;
+          });
+        },
+        underline: Container(),
+        items: DataHelper.tumDersHarfleri(),
       ),
     );
   }

@@ -25,4 +25,9 @@ class Sabitler {
     fontWeight: FontWeight.w800,
     color: anaRenk,
   );
+
+  static final dropDownPadding = EdgeInsets.symmetric(
+    horizontal: 16,
+    vertical: 8,
+  );
 }
