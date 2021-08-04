@@ -262,6 +262,69 @@ class _AnaSayfaState extends State<AnaSayfa> {
                       indent: 10,
                       endIndent: 10,
                     ),
+                    SizedBox(
+                      height: 5,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.reply,
+                            size: 20,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            "1.7k",
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              color: Colors.grey,
+                            ),
+                          ),
+                          SizedBox(
+                            width: 25,
+                          ),
+                          Icon(
+                            Icons.comment,
+                            size: 20,
+                            color: Colors.grey,
+                          ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            "325",
+                            style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Container(
+                            width: MediaQuery.of(context).size.width - 210,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Icon(Icons.favorite,
+                                    size: 20, color: Colors.red),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "2.3k",
+                                  style: TextStyle(
+                                    fontFamily: 'Montserrat',
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
