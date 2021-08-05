@@ -35,7 +35,7 @@ class _DetayState extends State<Detay> {
               borderRadius: BorderRadius.circular(10),
               elevation: 4,
               child: Container(
-                height: 250,
+                height: 240,
                 width: MediaQuery.of(context).size.width - 30,
                 decoration: BoxDecoration(
                   color: Colors.white,
@@ -111,7 +111,26 @@ class _DetayState extends State<Detay> {
                       indent: 5,
                       endIndent: 5,
                     ),
-                    Row(),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "\$6500",
+                            style: TextStyle(
+                              fontFamily: "Montserrat",
+                              fontSize: 22,
+                            ),
+                          ),
+                          FloatingActionButton(
+                            onPressed: () {},
+                            child: Icon(Icons.arrow_forward_ios),
+                            backgroundColor: Colors.brown,
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
