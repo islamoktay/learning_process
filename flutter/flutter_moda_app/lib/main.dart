@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_moda_app/detay.dart';
 
 void main() => runApp(ModaApp());
 
@@ -20,10 +21,62 @@ class AnaSayfa extends StatefulWidget {
   _AnaSayfaState createState() => _AnaSayfaState();
 }
 
-class _AnaSayfaState extends State<AnaSayfa> {
+class _AnaSayfaState extends State<AnaSayfa>
+    with SingleTickerProviderStateMixin {
+  late TabController tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    tabController = TabController(length: 4, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    tabController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Material(
+        color: Colors.white,
+        child: TabBar(
+          indicatorColor: Colors.transparent,
+          controller: tabController,
+          tabs: [
+            Tab(
+              icon: Icon(
+                Icons.more,
+                color: Colors.grey,
+                size: 22,
+              ),
+            ),
+            Tab(
+              icon: Icon(
+                Icons.play_arrow,
+                color: Colors.grey,
+                size: 22,
+              ),
+            ),
+            Tab(
+              icon: Icon(
+                Icons.navigation,
+                color: Colors.black,
+                size: 22,
+              ),
+            ),
+            Tab(
+              icon: Icon(
+                Icons.supervised_user_circle,
+                color: Colors.grey,
+                size: 22,
+              ),
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Text(
           "Moda Uygulaması",
@@ -156,14 +209,22 @@ class _AnaSayfaState extends State<AnaSayfa> {
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         children: [
-                          Container(
-                            height: 200,
-                            width: (MediaQuery.of(context).size.width - 50) / 2,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5),
-                              image: DecorationImage(
-                                image: AssetImage("assets/modelgrid1.jpeg"),
-                                fit: BoxFit.cover,
+                          InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => Detay(
+                                      imgPath: "assets/modelgrid1.jpeg")));
+                            },
+                            child: Container(
+                              height: 200,
+                              width:
+                                  (MediaQuery.of(context).size.width - 50) / 2,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5),
+                                image: DecorationImage(
+                                  image: AssetImage("assets/modelgrid1.jpeg"),
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
                           ),
