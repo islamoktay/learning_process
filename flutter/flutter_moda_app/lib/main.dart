@@ -215,15 +215,19 @@ class _AnaSayfaState extends State<AnaSayfa>
                                   builder: (context) => Detay(
                                       imgPath: "assets/modelgrid1.jpeg")));
                             },
-                            child: Container(
-                              height: 200,
-                              width:
-                                  (MediaQuery.of(context).size.width - 50) / 2,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5),
-                                image: DecorationImage(
-                                  image: AssetImage("assets/modelgrid1.jpeg"),
-                                  fit: BoxFit.cover,
+                            child: Hero(
+                              tag: "assets/modelgrid1.jpeg",
+                              child: Container(
+                                height: 200,
+                                width:
+                                    (MediaQuery.of(context).size.width - 50) /
+                                        2,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  image: DecorationImage(
+                                    image: AssetImage("assets/modelgrid1.jpeg"),
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                               ),
                             ),
@@ -233,32 +237,54 @@ class _AnaSayfaState extends State<AnaSayfa>
                           ),
                           Column(
                             children: [
-                              Container(
-                                height: 95,
-                                width:
-                                    (MediaQuery.of(context).size.width - 100) /
+                              InkWell(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => Detay(
+                                          imgPath: "assets/modelgrid2.jpeg")));
+                                },
+                                child: Hero(
+                                  tag: "assets/modelgrid2.jpeg",
+                                  child: Container(
+                                    height: 95,
+                                    width: (MediaQuery.of(context).size.width -
+                                            100) /
                                         2,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  image: DecorationImage(
-                                    image: AssetImage("assets/modelgrid2.jpeg"),
-                                    fit: BoxFit.cover,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/modelgrid2.jpeg"),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                               SizedBox(
                                 height: 10,
                               ),
-                              Container(
-                                height: 95,
-                                width:
-                                    (MediaQuery.of(context).size.width - 100) /
+                              InkWell(
+                                onTap: () {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                      builder: (context) => Detay(
+                                          imgPath: "assets/modelgrid3.jpeg")));
+                                },
+                                child: Hero(
+                                  tag: "assets/modelgrid3.jpeg",
+                                  child: Container(
+                                    height: 95,
+                                    width: (MediaQuery.of(context).size.width -
+                                            100) /
                                         2,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  image: DecorationImage(
-                                    image: AssetImage("assets/modelgrid3.jpeg"),
-                                    fit: BoxFit.cover,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      image: DecorationImage(
+                                        image: AssetImage(
+                                            "assets/modelgrid3.jpeg"),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
