@@ -1,20 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_pokedex/model/pokedex.dart';
+import 'package:palette_generator/palette_generator.dart';
 
 // ignore: must_be_immutable
-class PokemonDetail extends StatelessWidget {
+class PokemonDetail extends StatefulWidget {
   PokemonDetail({required this.pokemon, Key? key}) : super(key: key);
 
   Pokemon pokemon;
 
   @override
+  _PokemonDetailState createState() => _PokemonDetailState();
+}
+
+class _PokemonDetailState extends State<PokemonDetail> {
+  late PaletteGenerator _generator;
+  Color baskinRenk = Colors.transparent;
+
+  @override
+  void initState() {
+    super.initState();
+    arkaplanRenginiBul();
+  }
+
+  Future<void> arkaplanRenginiBul() async {
+    _generator = await PaletteGenerator.fromImageProvider(
+        NetworkImage(widget.pokemon.img));
+    baskinRenk = _generator.dominantColor!.color;
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepOrange,
+      backgroundColor: baskinRenk,
       appBar: AppBar(
+        backgroundColor: baskinRenk,
         elevation: 0,
         title: Text(
-          pokemon.name,
+          widget.pokemon.name,
           textAlign: TextAlign.center,
         ),
       ),
@@ -48,14 +71,14 @@ class PokemonDetail extends StatelessWidget {
                   height: 50,
                 ),
                 Text(
-                  pokemon.name,
+                  widget.pokemon.name,
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
                 Text(
-                  "Height : " + pokemon.height,
+                  "Height : " + widget.pokemon.height,
                 ),
                 Text(
-                  "Weight : " + pokemon.weight,
+                  "Weight : " + widget.pokemon.weight,
                 ),
                 Text(
                   "Types",
@@ -63,13 +86,13 @@ class PokemonDetail extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: pokemon.type
+                  children: widget.pokemon.type
                       .map((tip) => Chip(
                             label: Text(
                               tip,
                               style: TextStyle(color: Colors.white),
                             ),
-                            backgroundColor: Colors.deepOrange.shade300,
+                            backgroundColor: baskinRenk,
                           ))
                       .toList(),
                 ),
@@ -79,14 +102,14 @@ class PokemonDetail extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: pokemon.prevEvolution != null
-                      ? pokemon.prevEvolution!
+                  children: widget.pokemon.prevEvolution != null
+                      ? widget.pokemon.prevEvolution!
                           .map((evolution) => Chip(
                                 label: Text(
                                   evolution.name,
                                   style: TextStyle(color: Colors.white),
                                 ),
-                                backgroundColor: Colors.deepOrange.shade300,
+                                backgroundColor: baskinRenk,
                               ))
                           .toList()
                       : [Text("İlk Hali")],
@@ -97,14 +120,14 @@ class PokemonDetail extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: pokemon.nextEvolution != null
-                      ? pokemon.nextEvolution!
+                  children: widget.pokemon.nextEvolution != null
+                      ? widget.pokemon.nextEvolution!
                           .map((evolution) => Chip(
                                 label: Text(
                                   evolution.name,
                                   style: TextStyle(color: Colors.white),
                                 ),
-                                backgroundColor: Colors.deepOrange.shade300,
+                                backgroundColor: baskinRenk,
                               ))
                           .toList()
                       : [Text("Son Hali")],
@@ -115,13 +138,13 @@ class PokemonDetail extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: pokemon.weaknesses
+                  children: widget.pokemon.weaknesses
                       .map((weakness) => Chip(
                             label: Text(
                               weakness,
                               style: TextStyle(color: Colors.white),
                             ),
-                            backgroundColor: Colors.deepOrange.shade300,
+                            backgroundColor: baskinRenk,
                           ))
                       .toList(),
                 ),
@@ -132,9 +155,9 @@ class PokemonDetail extends StatelessWidget {
         Align(
           alignment: Alignment.topCenter,
           child: Hero(
-            tag: pokemon.img,
+            tag: widget.pokemon.img,
             child: Container(
-              child: Image.network(pokemon.img, fit: BoxFit.contain),
+              child: Image.network(widget.pokemon.img, fit: BoxFit.contain),
               height: 130,
               width: 130,
             ),
@@ -158,9 +181,9 @@ class PokemonDetail extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Hero(
-              tag: pokemon.img,
+              tag: widget.pokemon.img,
               child: Container(
-                child: Image.network(pokemon.img, fit: BoxFit.fill),
+                child: Image.network(widget.pokemon.img, fit: BoxFit.fill),
                 height: 200,
               ),
             ),
@@ -172,14 +195,14 @@ class PokemonDetail extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text(
-                    pokemon.name,
+                    widget.pokemon.name,
                     style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "Height : " + pokemon.height,
+                    "Height : " + widget.pokemon.height,
                   ),
                   Text(
-                    "Weight : " + pokemon.weight,
+                    "Weight : " + widget.pokemon.weight,
                   ),
                   Text(
                     "Types",
@@ -187,7 +210,7 @@ class PokemonDetail extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: pokemon.type
+                    children: widget.pokemon.type
                         .map((tip) => Chip(
                               label: Text(
                                 tip,
@@ -203,8 +226,8 @@ class PokemonDetail extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: pokemon.prevEvolution != null
-                        ? pokemon.prevEvolution!
+                    children: widget.pokemon.prevEvolution != null
+                        ? widget.pokemon.prevEvolution!
                             .map((evolution) => Chip(
                                   label: Text(
                                     evolution.name,
@@ -221,8 +244,8 @@ class PokemonDetail extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: pokemon.nextEvolution != null
-                        ? pokemon.nextEvolution!
+                    children: widget.pokemon.nextEvolution != null
+                        ? widget.pokemon.nextEvolution!
                             .map((evolution) => Chip(
                                   label: Text(
                                     evolution.name,
@@ -239,7 +262,7 @@ class PokemonDetail extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: pokemon.weaknesses
+                    children: widget.pokemon.weaknesses
                         .map((weakness) => Chip(
                               label: Text(
                                 weakness,
