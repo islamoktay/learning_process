@@ -70,13 +70,15 @@ class _PokemonListState extends State<PokemonList> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  width: 200,
-                                  height: 150,
-                                  child: FadeInImage.assetNetwork(
-                                    placeholder: "assets/loading.gif",
-                                    image: poke.img,
-                                    fit: BoxFit.contain,
+                                Expanded(
+                                  child: Container(
+                                    width: 200,
+                                    height: 150,
+                                    child: FadeInImage.assetNetwork(
+                                      placeholder: "assets/loading.gif",
+                                      image: poke.img,
+                                      fit: BoxFit.contain,
+                                    ),
                                   ),
                                 ),
                                 Text(
@@ -129,13 +131,15 @@ class _PokemonListState extends State<PokemonList> {
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-                                  width: 200,
-                                  height: 150,
-                                  child: FadeInImage.assetNetwork(
-                                    placeholder: "assets/loading.gif",
-                                    image: poke.img,
-                                    fit: BoxFit.contain,
+                                Expanded(
+                                  child: Container(
+                                    width: 200,
+                                    height: 150,
+                                    child: FadeInImage.assetNetwork(
+                                      placeholder: "assets/loading.gif",
+                                      image: poke.img,
+                                      fit: BoxFit.contain,
+                                    ),
                                   ),
                                 ),
                                 Text(
