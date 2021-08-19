@@ -13,7 +13,18 @@ class _SharedPrefKullanimiState extends State<SharedPrefKullanimi> {
   late int id;
   bool cinsiyet = true;
   var formKey = GlobalKey<FormState>();
-  SharedPreferences mySharedPrefences;
+  late SharedPreferences mySharedPrefences;
+
+  @override
+  void initState() {
+    super.initState();
+    SharedPreferences.getInstance().then((sf) => mySharedPrefences = sf);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,9 +127,25 @@ class _SharedPrefKullanimiState extends State<SharedPrefKullanimi> {
     );
   }
 
-  void _kaydet() {}
+  Future<void> _kaydet() async {
+    formKey.currentState!.save();
+    await mySharedPrefences.setString("myName", isim);
+    await mySharedPrefences.setInt("myId", id);
+    await mySharedPrefences.setBool("myCinsiyet", cinsiyet);
+  }
 
-  void _goster() {}
+  void _goster() {
+    debugPrint(
+        "Okunan İsim " + (mySharedPrefences.getString("myName") ?? "N\A"));
+    debugPrint("Okunan id " + (mySharedPrefences.getInt("myId").toString()));
 
-  void _sil() {}
+    debugPrint("Okunan Erkek Mi " +
+        (mySharedPrefences.getBool("myCinsiyet").toString()));
+  }
+
+  void _sil() {
+    mySharedPrefences.remove("myName");
+    mySharedPrefences.remove("myId");
+    mySharedPrefences.remove("myCinsiyet");
+  }
 }
